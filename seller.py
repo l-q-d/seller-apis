@@ -19,8 +19,11 @@ def get_product_list(last_id, client_id, seller_token):
     Функция принимает три аргумента last_id, клиентское ID и токен продавца.
     Для этого, функция обращается к api озон, передавая свои аргументы.
     
-    Типы данных:
-    Аргументы last_id, client_id, seller_token: str(строка);
+    Аргументы:
+        last_id: Идентификатор последнего товара(строка).
+        client_id: Идентификатор клиента Ozon(строка).
+        seller_token: Токен продавца Ozon(строка).
+
     Возвращает:
         Словарь, содержащий список товаров.
         Примеры:
@@ -35,8 +38,10 @@ def get_product_list(last_id, client_id, seller_token):
         }
 
         >>>get_product_list('wrong_last_id','wrong_client_id', 'wrong_seller_tokken')
-            HTTPError: При HTTP-ошибках (например, 400, 401, 500).    
-            requests.exceptions.RequestException: При ошибках сетевого запроса.
+            
+    Исключения:
+        HTTPError: При HTTP-ошибках (например, 400, 401, 500).    
+        requests.exceptions.RequestException: При ошибках сетевого запроса.
     """
     url = "https://api-seller.ozon.ru/v2/product/list"
     headers = {
@@ -61,16 +66,19 @@ def get_offer_ids(client_id, seller_token):
     Функция принимает два аргумента клиентское ID и токен продавца, создает список артикулов товаров магазина озон. 
     Функция использует функцию get_product_list для получения списка товаров магазина озон, передавая свои аргументы и аргумент last_id.
 
-    Типы данных:
-    Аргументы client_id и seller_token: str;
-    Возвращает offer_ids список со строками, где каждая строка это offer_id.
+    Аргументы:
+        client_id: Идентификатор клиента Ozon(строка).
+        seller_token: Токен продавца Ozon(строка).
 
-    Примеры:
-    >>> get_offer_ids('your_client_id', 'your_seller_token')
-    '*Артикул товара№1*', '*Артикул товара№2*', ...*'
+    Возвращает:
+        Список со строками, где каждая строка это offer_id.
+
+        Примеры:
+        >>> get_offer_ids('your_client_id', 'your_seller_token')
+        '*Артикул товара№1*', '*Артикул товара№2*', ...*'
     
-    >>> get_offer_ids('empty_client_id', 'empty_seller_token')
-    []
+        >>> get_offer_ids('empty_client_id', 'empty_seller_token')
+        []
     """
     last_id = ""
     product_list = []
@@ -94,8 +102,8 @@ def update_price(prices: list, client_id, seller_token):
 
     Аргументы:
         prices: Список словарей, содержащих информацию о ценах товаров.
-        client_id: Идентификатор клиента Ozon.
-        seller_token: Токен продавца Ozon.
+        client_id: Идентификатор клиента Ozon(строка).
+        seller_token: Токен продавца Ozon(строка).
 
     Возвращает:
         Словарь с результатом обновления цен.
@@ -126,8 +134,8 @@ def update_stocks(stocks: list, client_id, seller_token):
 
     Аргументы:
         stocks: Список словарей, содержащих информацию об остатках товаров.
-        client_id: Идентификатор клиента Ozon.
-        seller_token: Токен продавца Ozon.
+        client_id: Идентификатор клиента Ozon(строка).
+        seller_token: Токен продавца Ozon(строка).
 
     Возвращает:
         Словарь с результатом обновления остатков.
@@ -261,13 +269,19 @@ def price_conversion(price: str) -> str:
 
     Функция принимает строку, содержащую цену в формате "целая_часть.дробная_часть",
     удаляет все символы, кроме цифр, и возвращает строку, содержащую только целую часть цены.
-    Примеры:
-    >>> price_conversion('5990.00 руб.')
-    '5990'
-    >>> price_conversion('3400.00')
-    '3400'
+    
+    Аргументы:
+        price: цена для преобразования, строка.
 
-    Не правильно: price_conversion(3400.00)
+    Возвращает:
+        Преобразованную строку.
+        Примеры:
+        >>> price_conversion('5990.00 руб.')
+        '5990'
+        >>> price_conversion('3400.00')
+        '3400'
+
+        Не правильно: price_conversion(3400.00)
     """
     return re.sub("[^0-9]", "", price.split(".")[0])
 
@@ -300,8 +314,8 @@ async def upload_prices(watch_remnants, client_id, seller_token):
 
     Аргументы:
         watch_remnants: Список словарей с остатками часов.
-        client_id: Идентификатор клиента Ozon.
-        seller_token: Токен продавца Ozon.
+        client_id: Идентификатор клиента Ozon(строка).
+        seller_token: Токен продавца Ozon(строка).
 
     Возвращает:
         Список словарей, содержащих информацию о ценах, которые были загружены.
@@ -326,8 +340,8 @@ async def upload_stocks(watch_remnants, client_id, seller_token):
 
     Аргументы:
         watch_remnants: Список словарей с остатками часов.
-        client_id: Идентификатор клиента Ozon.
-        seller_token: Токен продавца Ozon.
+        client_id: Идентификатор клиента Ozon(строка).
+        seller_token: Токен продавца Ozon(строка).
 
     Возвращает:
         Кортеж, содержащий:

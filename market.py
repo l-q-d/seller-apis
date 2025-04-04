@@ -17,9 +17,9 @@ def get_product_list(page, campaign_id, access_token):
     Функция обращается к API Яндекс.Маркета для получения списка товаров.
 
     Аргументы:
-        page: Токен страницы.
-        campaign_id: Идентификатор кампании.
-        access_token: Токен доступа к API.
+        page: Токен страницы(строка).
+        campaign_id: Идентификатор кампании(строка).
+        access_token: Токен доступа к API(строка).
 
     Возвращает:
         Словарь, содержащий список товаров.
@@ -63,8 +63,8 @@ def update_stocks(stocks, campaign_id, access_token):
 
     Аргументы:
         stocks: Список словарей, содержащих информацию об остатках товаров.
-        campaign_id: Идентификатор кампании.
-        access_token: Токен доступа к API.
+        campaign_id: Идентификатор кампании(строка).
+        access_token: Токен доступа к API(строка).
 
     Возвращает:
         Словарь с результатом обновления остатков.
@@ -97,8 +97,8 @@ def update_price(prices, campaign_id, access_token):
 
     Аргументы:
         prices: Список словарей, содержащих информацию о ценах товаров.
-        campaign_id: Идентификатор кампании.
-        access_token: Токен доступа к API.
+        campaign_id: Идентификатор кампании(строка).
+        access_token: Токен доступа к API(строка).
 
     Возвращает:
         Словарь с результатом обновления цен.
@@ -130,8 +130,8 @@ def get_offer_ids(campaign_id, market_token):
     Функция получает список offer_id товаров из Яндекс.Маркета.
 
     Аргументы:
-        campaign_id: Идентификатор кампании.
-        market_token: Токен доступа к API Яндекс.Маркета.
+        campaign_id: Идентификатор кампании(строка).
+        market_token: Токен доступа к API Яндекс.Маркета(строка).
 
     Возвращает:
         Список артикулов товаров (shopSku).
@@ -159,7 +159,7 @@ def create_stocks(watch_remnants, offer_ids, warehouse_id):
 
     Аргументы:
         watch_remnants: Список словарей с остатками часов.
-        offer_ids: Список shopSku товаров на Яндекс.Маркет.
+        offer_ids: Список артикулов товаров на Яндекс.Маркет.
         warehouse_id: Идентификатор склада.
 
     Возвращает:
@@ -220,7 +220,7 @@ def create_prices(watch_remnants, offer_ids):
 
     Аргументы:
         watch_remnants: Список словарей с остатками часов.
-        offer_ids: Список shopSku товаров на Яндекс.Маркет.
+        offer_ids: Список артикулов товаров на Яндекс.Маркет.
 
     Возвращает:
         Список словарей, содержащих информацию о ценах для отправки на Яндекс.Маркет.
@@ -256,8 +256,8 @@ async def upload_prices(watch_remnants, campaign_id, market_token):
 
     Аргументы:
         watch_remnants: Список словарей с остатками часов.
-        campaign_id: Идентификатор кампании.
-        market_token: Токен доступа к API Яндекс.Маркета.
+        campaign_id: Идентификатор кампании(строка).
+        market_token: Токен доступа к API Яндекс.Маркета(строка).
 
     Возвращает:
         Список словарей, содержащих информацию о ценах, которые были загружены.
@@ -281,8 +281,8 @@ async def upload_stocks(watch_remnants, campaign_id, market_token, warehouse_id)
 
     Аргументы:
         watch_remnants: Список словарей с остатками часов.
-        campaign_id: Идентификатор кампании.
-        market_token: Токен доступа к API Яндекс.Маркета.
+        campaign_id: Идентификатор кампании(строка).
+        market_token: Токен доступа к API Яндекс.Маркета(строка).
         warehouse_id: Идентификатор склада.
 
     Возвращает:
